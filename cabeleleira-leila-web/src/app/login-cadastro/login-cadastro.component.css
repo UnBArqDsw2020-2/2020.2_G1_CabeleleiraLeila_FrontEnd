@@ -1,8 +1,16 @@
 body {
     padding-top: 90px;
 }
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center
+}
 
 .panel-login {
+	width: 600px;
 	border-color: #ccc;
 	-webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
 	-moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
