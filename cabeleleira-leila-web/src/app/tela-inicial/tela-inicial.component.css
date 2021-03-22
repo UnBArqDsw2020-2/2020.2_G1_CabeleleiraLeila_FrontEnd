@@ -1,0 +1,43 @@
+section {
+  margin: 0 4%;
+  margin-bottom: 4%;
+}
+
+section section {
+  margin: 0;
+}
+
+#infos-pagamento{
+    padding-top: 3%;
+}
+
+
+.info-geral {
+  font-family: Open Sans, sans-serif;
+  padding-top: 0.7%;
+  float: left;
+  /* border: 5px solid blue; */
+}
+
+.info-img {
+  width: 15%;
+  position: relative;
+  float: left;
+}
+
+.imagem {
+  width: 100%;
+}
+
+.nome-salao {
+  position: relative;
+  float: left;
+  position: relative;
+  float: left;
+  padding-top: 2%;
+}
+
+.estrelas {
+  color: #f99158;
+  font-size: 22px;
+}
