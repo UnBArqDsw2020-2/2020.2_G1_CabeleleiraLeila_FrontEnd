@@ -1,1 +1,28 @@
-<p>servico-update works!</p>
+<button class="btn btn-sm" (click)="open(content)">
+    <fa-icon [icon]="faPencilAlt"></fa-icon>
+</button>   
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 *ngIf="editarServico" class="modal-title" id="modal-basic-title">Editar serviço</h4>
+      <h4 *ngIf="criarServico" class="modal-title" id="modal-basic-title">Criar serviço</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label class="font-weight-bold mt-2 mb-0">Nome</label>
+        <input type="text" name="nome" id="nome" tabindex="1" class="form-control" placeholder="Nome">
+        <label class="font-weight-bold mt-2 mb-0">Descrição</label>
+        <input type="text" name="descricao" id="descricao" tabindex="2" class="form-control" placeholder="Descrição">
+        <label class="font-weight-bold mt-2 mb-0">Url da imagem</label>
+        <input type="text" name="url" id="url" tabindex="3" class="form-control" placeholder="Url da imagem">
+        <label class="font-weight-bold mt-2 mb-0">Valor</label>
+        <input type="text" name="valor" id="valor" tabindex="4" class="form-control" placeholder="Url da imagem">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Salvar</button>
+    </div>
+</ng-template>
+    
