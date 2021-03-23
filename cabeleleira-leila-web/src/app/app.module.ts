@@ -8,12 +8,16 @@ import { LoginCadastroComponent } from './login-cadastro/login-cadastro.componen
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ServicosComponent } from './servicos/servicos.component';
+import { ServicoUpdateComponent } from './servicos/servico-update.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginCadastroComponent,
-    TelaInicialComponent
+    TelaInicialComponent,
+    ServicosComponent,
+    ServicoUpdateComponent
   ],
   imports: [
     BrowserModule,
