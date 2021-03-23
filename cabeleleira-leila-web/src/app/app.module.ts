@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginCadastroComponent } from './login-cadastro/login-cadastro.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
