@@ -25,22 +25,25 @@
             </div>
         </ng-template>
     </ngb-carousel>
+    <div class="d-flex flex-column">
 
-    <div class="info-geral mb-4">
-        <div class="info-img">
-            <img class="imagem" src="../../assets/img/logo1.png">
+        <div class="info-geral mb-4">
+            <div class="info-img">
+                <img class="imagem" src="../../assets/img/logo1.png">
+            </div>
+            <div class="nome-salao">
+                <h3>Cabeleleila Leila</h3>
+                <span class="estrelas">5.0</span>
+                <fa-icon [icon]="faStar"></fa-icon>
+                <nav>
+                    <a href="/tela-inicial#infos-pagamento">+ Informações</a>
+                </nav>
+            </div>
         </div>
-        <div class="nome-salao">
-            <h3>Cabeleleila Leila</h3>
-            <span class="estrelas">5.0</span>
-            <fa-icon [icon]="faStar"></fa-icon>
-            <nav>
-                <a href="/tela-inicial#infos-pagamento">+ Informações</a>
-            </nav>
-        </div>
+
+        <app-servicos></app-servicos>
+
     </div>
-    <app-servicos></app-servicos>
-
     <section id="infos-pagamento">
         <h4>Cabeleleila Leila</h4><br>
         <strong>Formas de pagamento: </strong>

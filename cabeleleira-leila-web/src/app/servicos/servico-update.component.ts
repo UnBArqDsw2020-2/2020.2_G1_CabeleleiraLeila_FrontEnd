@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+import { IServico } from 'src/shared/model/servico.model';
 
 @Component({
   selector: 'app-servico-update',
@@ -10,6 +11,10 @@ import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 })
 
 export class ServicoUpdateComponent {
+  
+  @Input()
+  servico: IServico;
+  
   closeResult = '';
   faPencilAlt = faPencilAlt;
   editarServico = true;
@@ -18,6 +23,7 @@ export class ServicoUpdateComponent {
   constructor(private modalService: NgbModal) {}
 
   ngOnInit(): void {
+    console.log('servico', this.servico);
   }
 
   open(content: any) {
