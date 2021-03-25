@@ -55,14 +55,15 @@ export class ServicoUpdateComponent {
     if (this.editaServico) {
       this.servicoService.update(this.servico).subscribe((res: HttpResponse<IServico>) => {
         this.servico = res.body;
-        this.getDismissReason("Salvo com sucesso");
+        this.modalService.dismissAll();
       });
     } else {
       this.servicoService.create(this.servico).subscribe((res: HttpResponse<IServico>) => {
         this.servico = res.body;
-        this.getDismissReason("Criado com sucesso");
+        this.modalService.dismissAll();
       });
     }
+    
   }
 
   private getDismissReason(reason: any): string {
