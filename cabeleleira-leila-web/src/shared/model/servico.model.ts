@@ -3,7 +3,7 @@ export interface IServico {
     nome?: string;
     descricao?: string;
     valor?: number;
-    imagens?: string;
+    imagem?: string;
     nota?: number;
 }
 
@@ -13,7 +13,7 @@ export class Servico implements IServico {
         public nome?: string,
         public descricao?: string,
         public valor?: number,
-        public imagens?: string,
+        public imagem?: string,
         public nota?: number
     ) { }
 }
