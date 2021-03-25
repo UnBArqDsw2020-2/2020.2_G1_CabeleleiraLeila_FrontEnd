@@ -1,6 +1,9 @@
 <nav class="navbar-expand-lg navbar-light">
     <a class="navbar-brand col-10" routerLink=""><img src="../../assets/img/logo3.png" alt="logo leila" height="60"></a>
-    <button class="btn btn-info my-2 my-sm-0" routerLink="/login-cadastro">Entrar ou cadastrar</button>
+    <div>
+        <button class="btn btn-info my-2 my-sm-0" routerLink="/login-cadastro">Entrar ou cadastrar</button>
+        <app-servico-update [editaServico]="false" [criaServico]="true"></app-servico-update>
+    </div>
 </nav>
 <router-outlet></router-outlet>
 
