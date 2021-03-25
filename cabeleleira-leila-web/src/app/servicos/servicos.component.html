@@ -5,7 +5,7 @@
                 <h5 class="titulo-servico">{{servico.nome}}</h5>
                 <app-servico-update [servico]="servico" [editaServico]="true" [criaServico]="false"></app-servico-update>
             </div>
-            <img class="card-img-top" src="{{servico.imagens}}" alt="Imagem do servco">
+            <img class="card-img-top" src="{{servico.imagem}}" alt="Imagem do servco">
             <div class="card-body">
                 <p class="card-text">{{servico.descricao}}</p>
                 <h5 class="card-title">Preço: {{servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
