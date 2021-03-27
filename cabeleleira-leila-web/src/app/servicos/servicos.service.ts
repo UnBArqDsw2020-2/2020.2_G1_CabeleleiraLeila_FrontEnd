@@ -12,7 +12,7 @@ type EntityArrayResponseType = HttpResponse<IServico[]>;
 })
 
 export class ServicoService {
-  public resourceUrl = SERVER_API_URL + 'api/servico';
+  public resourceUrl = SERVER_API_URL + 'api/servicos';
 
   constructor(private http: HttpClient) { }
 
