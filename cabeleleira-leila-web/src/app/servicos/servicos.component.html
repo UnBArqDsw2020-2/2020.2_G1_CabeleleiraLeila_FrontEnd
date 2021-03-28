@@ -3,6 +3,7 @@
         <div class="card col-3 px-0 mx-2">
             <div class="card-header d-flex justify-content-between">
                 <h5 class="titulo-servico">{{servico.nome}}</h5>
+                <app-servico-delete [servico]="servico"></app-servico-delete>
                 <app-servico-update [servico]="servico" [editaServico]="true" [criaServico]="false"></app-servico-update>
             </div>
             <img class="card-img-top" src="{{servico.imagem}}" alt="Imagem do servco">
