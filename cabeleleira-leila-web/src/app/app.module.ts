@@ -11,6 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ServicoDeleteComponent } from './servicos/servico-delete.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginCadastroComponent,
     TelaInicialComponent,
     ServicosComponent,
-    ServicoUpdateComponent
+    ServicoUpdateComponent,
+    ServicoDeleteComponent
   ],
   imports: [
     BrowserModule,

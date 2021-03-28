@@ -31,4 +31,8 @@ export class ServicoService {
   query(): Observable<EntityArrayResponseType> {
     return this.http.get<IServico[]>(this.resourceUrl, { observe: 'response' });
   }
+
+  delete(id: number): Observable<EntityResponseType> {
+    return this.http.delete<IServico>(`${this.resourceUrl}/${id}`, { observe: 'response' });
+  }
 }
