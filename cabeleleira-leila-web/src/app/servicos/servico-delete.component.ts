@@ -48,6 +48,7 @@ export class ServicoDeleteComponent implements OnInit {
   deletarServico(): void {
     this.servicoService.delete(this.servico.id).subscribe((res: HttpResponse<IServico>) => {
       this.modalService.dismissAll();
+      window.location.reload();
     });
   }
 }

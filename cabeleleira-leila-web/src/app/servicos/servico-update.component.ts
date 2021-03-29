@@ -56,11 +56,13 @@ export class ServicoUpdateComponent {
       this.servicoService.update(this.servico).subscribe((res: HttpResponse<IServico>) => {
         this.servico = res.body;
         this.modalService.dismissAll();
+        window.location.reload();
       });
     } else {
       this.servicoService.create(this.servico).subscribe((res: HttpResponse<IServico>) => {
         this.servico = res.body;
         this.modalService.dismissAll();
+        window.location.reload();
       });
     }
     
