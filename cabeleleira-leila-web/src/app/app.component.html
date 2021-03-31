@@ -1,20 +1,20 @@
-<nav class="navbar-expand-lg navbar-light d-flex justify-content-between">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand col-10" routerLink=""><img src="../../assets/img/logo3.png" alt="logo leila" height="60"></a>
     <div class="d-inline-flex">
         <app-servico-update [editaServico]="false" [criaServico]="true"></app-servico-update>
-        <button class="btn-rosa-tema btn btn-info m-2" routerLink="/login-cadastro">Entrar ou cadastrar</button>
+        <button class="btn-rosa-tema btn btn-info my-2 mx-6" routerLink="/login-cadastro">Entrar ou cadastrar</button>
     </div>
 </nav>
 <router-outlet></router-outlet>
 
 
-<footer class="row pl-lg-6 pr-lg-5 px-5 py-4 m-0">
-    <div class="col-8 col-sm-8 col-md-4 col-lg-4">
+<footer class="d-flex justify-content-between">
+    <div class="col-lg-5 pl-lg-5">
         <h5>Cabeleleila Leila</h5>
-        <span class="footer-conteudo">St. Leste Projeção A - Gama Leste<br>Brasília - DF<br>CEP: 72444-240<br>Telefone:
+        <span class="footer-conteudo">St. Leste Projeção A - Gama Leste, Brasília - DF<br>CEP: 72444-240<br>Telefone:
             (61) 3107-8901</span>
     </div>
-    <div class="col-10 col-sm-15 col-md-7 col-lg-5">
+    <div class="col-lg-5">
         <h5>Formas de pagamento</h5>
         <div class="footer-box__bloco-pagamento">
             <a class="footer-conteudo">Visa</a>
@@ -27,11 +27,5 @@
             <a class="footer-conteudo">PIX</a>
             <a class="footer-conteudo">Boleto</a>
         </div>
-    </div>
-    <div class="col-4 col-sm-4 col-md-7 col-lg-2 footer-box">
-        <h5>Redes Sociais</h5>
-        <a class="btn-social-icon btn-twitter">
-            <span class="fa fa-twitter"></span>
-        </a>
     </div>
 </footer>

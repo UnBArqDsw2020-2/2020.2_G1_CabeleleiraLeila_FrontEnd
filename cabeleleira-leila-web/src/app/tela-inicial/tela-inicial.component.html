@@ -1,4 +1,4 @@
-<section class="principal">
+<section class="principal mb-4% mt-4%">
     <ngb-carousel>
         <ng-template ngbSlide>
             <div class="wrapper w-100 d-flex">
@@ -31,10 +31,12 @@
             <div class="info-img">
                 <img class="imagem" src="../../assets/img/logo1.png">
             </div>
-            <div class="nome-salao">
+            <div class="nome-salao pt-3">
                 <h3>Cabeleleila Leila</h3>
-                <span class="estrelas">5.0</span>
-                <fa-icon [icon]="faStar"></fa-icon>
+                <div class="d-inline-flex">
+                    <span class="nota-estrelas">5.0</span>
+                    <fa-icon class="estrela" [icon]="faStar"></fa-icon>
+                </div>
             </div>
         </div>
         <app-servicos></app-servicos>
