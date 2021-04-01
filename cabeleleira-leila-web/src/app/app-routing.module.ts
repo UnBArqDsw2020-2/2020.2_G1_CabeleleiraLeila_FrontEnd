@@ -4,12 +4,13 @@ import { LoginCadastroComponent } from './login-cadastro/login-cadastro.componen
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 const routes: Routes = [
   { path: 'login-cadastro', component: LoginCadastroComponent },
   { path: '', component: TelaInicialComponent },
   { path: 'servicos', component: ServicosComponent },
-  { path: 'adicionar-servico', component: ServicoUpdateComponent }
+  { path: 'adicionar-servico', component: ServicoUpdateComponent },
 ];
 
 @NgModule({

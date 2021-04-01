@@ -12,6 +12,7 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ServicoDeleteComponent } from './servicos/servico-delete.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ServicoDeleteComponent } from './servicos/servico-delete.component';
     TelaInicialComponent,
     ServicosComponent,
     ServicoUpdateComponent,
-    ServicoDeleteComponent
+    ServicoDeleteComponent,
+    FuncionariosComponent
   ],
   imports: [
     BrowserModule,
