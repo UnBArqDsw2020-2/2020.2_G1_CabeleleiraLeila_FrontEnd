@@ -1,5 +1,5 @@
 <div class="card-deck">
-    <div *ngFor="let servico of servicos" class="card-servico m-2">
+    <div *ngFor="let servico of servicos" class="card-servico">
         <div class="card-header d-flex justify-content-between">
             <h5 class="titulo-servico">{{servico.nome}}</h5>
             <div>
@@ -10,12 +10,12 @@
         </div>
         <img class="card-img-top" src="{{servico.imagem}}" alt="Imagem do servco">
         <div class="card-body">
-            <p class="card-text card-desc">{{servico.descricao}}</p>
+            <p class="card-desc">{{servico.descricao}}</p>
             <h5 class="card-title">Preço: {{servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
             </h5>
             <h5 class="card-text">Nota: {{servico.nota}}</h5>
             <div class="d-flex justify-content-center">
-                <button class="btn btn-primary">Agendar horário</button>
+                <button class="btn btn-primary btn-cor">Agendar horário</button>
             </div>
         </div>
     </div>

@@ -2,15 +2,29 @@
   line-height: 1.5;
 }
 img{
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 100%;
+}
+.card-deck{
+  margin: 0;
+  padding: 0 3%;
 }
 .card-servico{
     border: 1px solid rgba(0,0,0,.125);
     border-radius: 1%;
-    height: 650px;
-    width: 302px;
+    margin: 0 1% 2% 1%;
+    height: 50%;
+    width: 23%;
 }
 .card-desc{
-    height: 130px;
+  text-align: justify;
+  height: 80px;
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  /* white-space: nowrap; */
+}
+
+.btn-cor{
+  /* background-color:  #bf045b; */
+  background-color:  #ff722d;
 }
