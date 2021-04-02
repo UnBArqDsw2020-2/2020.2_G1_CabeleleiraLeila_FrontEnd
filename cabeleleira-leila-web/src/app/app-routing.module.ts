@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginCadastroComponent } from './login-cadastro/login-cadastro.component';
+import { LoginComponent } from './login/login.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 
 
 const routes: Routes = [
-  {path: 'login-cadastro', component: LoginCadastroComponent},
+  {path: 'login-cadastro', component: LoginComponent},
   {path: 'tela-inicial', component: TelaInicialComponent}
 ];
 

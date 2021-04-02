@@ -103,26 +103,6 @@
   text-decoration: underline;
   color: #666;
 }
-
-.btn-register {
-  background-color: #bf045b;
-  outline: none;
-  color: #fff;
-  font-size: 14px;
-  height: auto;
-  font-weight: bold;
-  padding: 11px 0;
-  text-transform: uppercase;
-  border-color: #bf045b;
-}
-
-.btn-register:hover,
-.btn-register:focus {
-  color: #fff;
-  background-color: #bf045b;
-  border-color: #bf045b;
-}
-
 .checkbox-senha {
   margin: 6px;
 }
