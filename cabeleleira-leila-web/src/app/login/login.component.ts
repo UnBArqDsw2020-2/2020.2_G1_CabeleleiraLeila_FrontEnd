@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { 
+
+  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) {
   }
-  
+
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
@@ -30,8 +30,9 @@ export class LoginComponent implements OnInit {
   onSubmit(): void {
     this.authService.login(this.form).subscribe(
       (data: any) => {
-        this.tokenStorage.saveToken(data.accessToken);
+        this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data);
+        window.localStorage.setItem("token",data.token);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
