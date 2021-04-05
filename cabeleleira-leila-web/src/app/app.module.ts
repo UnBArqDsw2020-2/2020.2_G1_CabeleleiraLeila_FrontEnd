@@ -13,6 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { ServicoDeleteComponent } from './servicos/servico-delete.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { ServicoDeleteComponent } from './servicos/servico-delete.component';
     ServicosComponent,
     ServicoUpdateComponent,
     ServicoDeleteComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

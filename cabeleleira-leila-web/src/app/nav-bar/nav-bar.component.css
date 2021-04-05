@@ -1,0 +1,15 @@
+h3 {
+    font-family: Open Sans, sans-serif;
+    ;
+  }
+  
+  nav {
+    padding: 0 3%;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1%;
+  }
+  
+  .btn-rosa-tema {
+    background-color: #bf045b;
+  }
+  
