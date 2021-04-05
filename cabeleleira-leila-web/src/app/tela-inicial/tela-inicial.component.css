@@ -1,0 +1,36 @@
+section {
+  margin: 0 4%;
+}
+
+.info-geral {
+  font-family: Open Sans, sans-serif;
+  padding-top: 0.7%;
+  float: left;
+}
+
+.info-img {
+  width: 15%;
+  position: relative;
+  float: left;
+}
+
+.imagem {
+  width: 100%;
+}
+
+.nome-salao {
+  position: relative;
+  float: left;
+}
+
+.nota-estrelas {
+  color: #f99158;
+  font-size: 25px;
+}
+
+.estrela{
+  font-size: 20px;
+  color: darkorange;
+  padding: 3px;
+  margin-left: 10%;
+}

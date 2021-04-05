@@ -1,0 +1,15 @@
+<button class="btn btn-sm" (click)="open(content)">
+    <fa-icon [icon]="faTrashAlt"></fa-icon>
+</button>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        Excluir serviço
+    </div>
+    <div class="modal-body">
+        Tem certeza que deseja excluir serviço?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="deletarServico()">Sim</button>
+        <button type="button" class="btn btn-outline-dark" (click)="modal.dismiss('Cross click')">Não</button>
+    </div>
+</ng-template>

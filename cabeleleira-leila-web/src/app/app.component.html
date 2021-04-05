@@ -1,5 +1,31 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand col-10" routerLink="/">     <img src="../favicon.ico" alt="logo leila" width="80" height="80"> Cabeleileila Leila</a>
-    <button class="btn btn-info my-2 my-sm-0" routerLink="/login-cadastro">Entrar ou cadastrar</button>
+    <a class="navbar-brand col-10" routerLink=""><img src="../../assets/img/logo3.png" alt="logo leila" height="60"></a>
+    <div class="d-inline-flex">
+        <app-servico-update [editaServico]="false" [criaServico]="true"></app-servico-update>
+        <button class="btn-rosa-tema btn btn-info my-2 mx-6" routerLink="/login-cadastro">Entrar ou cadastrar</button>
+    </div>
 </nav>
 <router-outlet></router-outlet>
+
+
+<footer class="d-flex justify-content-between">
+    <div class="col-lg-5 pl-lg-5">
+        <h5>Cabeleleila Leila</h5>
+        <span class="footer-conteudo">St. Leste Projeção A - Gama Leste, Brasília - DF<br>CEP: 72444-240<br>Telefone:
+            (61) 3107-8901</span>
+    </div>
+    <div class="col-lg-5">
+        <h5>Formas de pagamento</h5>
+        <div class="footer-box__bloco-pagamento">
+            <a class="footer-conteudo">Visa</a>
+            <a class="footer-conteudo">Transferência</a>
+            <a class="footer-conteudo">Master</a>
+            <a class="footer-conteudo">Hipercard</a>
+            <a class="footer-conteudo">Elo Crédito</a>
+            <a class="footer-conteudo">Visa Electron</a>
+            <a class="footer-conteudo">Dinheiro</a>
+            <a class="footer-conteudo">PIX</a>
+            <a class="footer-conteudo">Boleto</a>
+        </div>
+    </div>
+</footer>

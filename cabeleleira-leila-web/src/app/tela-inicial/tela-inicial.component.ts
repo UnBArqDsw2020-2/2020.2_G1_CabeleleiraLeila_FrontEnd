@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-tela-inicial',
@@ -7,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TelaInicialComponent implements OnInit {
 
-  constructor() {
+  faStar = faStar;
 
-  }
+  constructor() {  }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
 }

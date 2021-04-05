@@ -1,26 +1,43 @@
-<ngb-carousel>
-    <ng-template ngbSlide>
-        <div class="wrapper w-100 d-flex">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
+<section class="principal mb-4% mt-4%">
+    <ngb-carousel>
+        <ng-template ngbSlide>
+            <div class="wrapper w-100 d-flex">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="wrapper w-100 d-flex">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+            </div>
+        </ng-template>
+        <ng-template ngbSlide>
+            <div class="wrapper w-100 d-flex">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+                <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="imagem salão">
+            </div>
+        </ng-template>
+    </ngb-carousel>
+    <div class="d-flex justify-content-between flex-column p-0">
+        <div class="info-geral mb-4">
+            <div class="info-img">
+                <img class="imagem" src="../../assets/img/logo1.png">
+            </div>
+            <div class="nome-salao pt-3">
+                <h3>Cabeleleila Leila</h3>
+                <div class="d-inline-flex">
+                    <span class="nota-estrelas">5.0</span>
+                    <fa-icon class="estrela" [icon]="faStar"></fa-icon>
+                </div>
+            </div>
         </div>
-    </ng-template>
-    <ng-template ngbSlide>
-        <div class="wrapper w-100 d-flex">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-        </div>
-    </ng-template>
-    <ng-template ngbSlide>
-        <div class="wrapper w-100 d-flex">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-            <img src="../../assets/img/pagina-inicial-2.jpg" height="400" weight="400" alt="Random first slide">
-        </div>
-    </ng-template>
-</ngb-carousel>
+        <app-servicos></app-servicos>
+    </div>
+</section>
