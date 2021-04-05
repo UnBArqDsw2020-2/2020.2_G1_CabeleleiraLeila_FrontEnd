@@ -1,4 +1,4 @@
-<section class="principal">
+<section class="principal mb-4% mt-4%">
     <ngb-carousel>
         <ng-template ngbSlide>
             <div class="wrapper w-100 d-flex">
@@ -30,25 +30,14 @@
             <div class="info-img">
                 <img class="imagem" src="../../assets/img/logo1.png">
             </div>
-            <div class="nome-salao">
+            <div class="nome-salao pt-3">
                 <h3>Cabeleleila Leila</h3>
-                <span class="estrelas">5.0</span>
-                <fa-icon [icon]="faStar"></fa-icon>
-                <nav>
-                    <a href="#infos-pagamento">+ Informações</a>
-                </nav>
+                <div class="d-inline-flex">
+                    <span class="nota-estrelas">5.0</span>
+                    <fa-icon class="estrela" [icon]="faStar"></fa-icon>
+                </div>
             </div>
         </div>
         <app-servicos></app-servicos>
     </div>
-
-    <section id="infos-pagamento">
-        <h4>Cabeleleila Leila</h4><br>
-        <strong>Formas de pagamento: </strong>
-        <span>Visa, Mastercard, Hipercard, Elo Crédito, Maestro/Redeshop, Visa Electron, Elo Débito,
-            Transferência entre Conta Corrente, Dinheiro</span><br>
-        <strong>Facilidades: </strong>
-        <span>Wi-Fi, Atendemos adultos e crianças, TV, Aceita cartão de crédito</span>
-    </section>
-
 </section>
