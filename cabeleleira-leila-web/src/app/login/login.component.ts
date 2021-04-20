@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
+  tokendecodificado: any;
 
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {
   }
@@ -29,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
+    window.localStorage.clear();
     this.authService.login(this.form).subscribe(
       (data: any) => {
         console.log('data', data);
@@ -38,6 +40,8 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        this.tokendecodificado = this.tokenStorage.decodePayloadJWT();
+        console.log('tokendecodificado', this.tokendecodificado);
         this.roles = this.tokenStorage.getUser().roles;
         this.router.navigate(['']);
         this.reloadPage();
