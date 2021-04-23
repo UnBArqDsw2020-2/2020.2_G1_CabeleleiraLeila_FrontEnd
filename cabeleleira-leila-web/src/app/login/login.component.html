@@ -17,13 +17,13 @@
     <form id="login-form" *ngIf="mostraLogin !isLoggedIn" method="post" role="form" name="form"
       (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
       <div class="form-group">
-        <input type="text" class="form-control" name="username" [(ngModel)]="form.username" required
+        <input type="text" class="form-control" name="username" [(ngModel)]="pessoa.username" required
           placeholder="Usuário" #username="ngModel" tabindex="1">
       </div>
 
       <div class="form-group">
         <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Senha"
-          [(ngModel)]="form.password" required minlength="6" #password="ngModel">
+          [(ngModel)]="pessoa.password1" required minlength="6" #password="ngModel">
       </div>
       <div class="form-group">
         <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">

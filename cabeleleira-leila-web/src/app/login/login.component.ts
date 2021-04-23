@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { IPessoa, Pessoa } from 'src/shared/model/pessoa.model';
 import { AuthService } from '../_services-auth/auth.service';
 import { TokenStorageService } from '../_services-auth/token-storage.service';
 
@@ -17,21 +18,22 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-  tokendecodificado: any;
-
+  pessoa: IPessoa = new Pessoa();
+  
+  
   constructor(private authService: AuthService, private tokenStorage: TokenStorageService, private router: Router) {
   }
-
+  
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      this.roles = this.tokenStorage.getUserRoles();
     }
   }
 
   onSubmit(): void {
     window.localStorage.clear();
-    this.authService.login(this.form).subscribe(
+    this.authService.login(this.pessoa).subscribe(
       (data: any) => {
         console.log('data', data);
         this.tokenStorage.saveToken(data.token);
@@ -40,11 +42,9 @@ export class LoginComponent implements OnInit {
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.tokendecodificado = this.tokenStorage.decodePayloadJWT();
-        console.log('tokendecodificado', this.tokendecodificado);
-        this.roles = this.tokenStorage.getUser().roles;
+        this.pessoa.roles = this.tokenStorage.getUserRoles();
+        console.log('tokendecodificado', this.pessoa.roles);
         this.router.navigate(['']);
-        this.reloadPage();
       },
       (err: any) => {
         this.errorMessage = err.error.message;
