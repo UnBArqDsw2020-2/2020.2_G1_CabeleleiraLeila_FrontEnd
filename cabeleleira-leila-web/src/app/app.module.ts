@@ -14,6 +14,7 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { ServicoDeleteComponent } from './servicos/servico-delete.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     HttpClientModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
