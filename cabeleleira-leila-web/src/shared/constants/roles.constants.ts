@@ -1,0 +1,3 @@
+export const ROLE_ADMIN = 'ROLE_ADMIN';
+export const ROLE_FUNCIONARIO = 'ROLE_FUNCIONARIO';
+export const ROLE_CLIENTE = 'ROLE_CLIENTE';
