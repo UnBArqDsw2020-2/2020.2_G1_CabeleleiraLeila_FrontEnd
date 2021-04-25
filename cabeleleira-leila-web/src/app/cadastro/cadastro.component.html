@@ -1,57 +1,70 @@
 <form id="register-form" method="post" role="form" *ngIf="!isSuccessful" name="form"
-  (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+  (ngSubmit)="onSubmit()" #f="ngForm" [formGroup]="cadastroForm" novalidate>
   <div class="form-group">
-    <input input type="text" class="form-control" name="username" [(ngModel)]="form.username" required minlength="3"
-      maxlength="20" #username="ngModel" id="username" tabindex="1" placeholder="Usuário">
+    <input input type="text" class="form-control" name="username" required minlength="3" [(ngModel)]="pessoa.username"
+      maxlength="20" id="username" tabindex="1" formControlName="username" placeholder="Usuário">
+  </div>
+  <div class="form-group d-flex">
+    <label for="nascimento" class="col-5 pl-1 pt-2">Data de nascimento</label>
+    <input type="date" name="nascimento" id="nascimento" tabindex="2" class="form-control" formControlName="nascimento"
+      placeholder="Data de nascimento" [(ngModel)]="pessoa.nascimento" required>
   </div>
   <div class="form-group">
-    <input type="date" name="nascimento" id="nascimento" tabindex="2" class="form-control"
-      placeholder="Data de nascimento" [(ngModel)]="form.nascimento" required #nascimento="ngModel">
-  </div>
-  <div class="form-group">
-    <input type="email" class="form-control" name="email" [(ngModel)]="form.email" required email #email="ngModel"
-      id="email" tabindex="3" placeholder="Email">
+    <input type="email" class="form-control" name="email" [(ngModel)]="pessoa.email" required email
+      id="email" tabindex="3" placeholder="Email" formControlName="email">
   </div>
   <div class="form-group">
     <input type="tel" name="telefone" id="telefone" tabindex="4" class="form-control" placeholder="Telefone"
-      [(ngModel)]="form.telefone" required minlength="6" #telefone="ngModel">
+      [(ngModel)]="pessoa.telefone" required minlength="9" formControlName="telefone">
   </div>
   <div class="form-group">
-    <input type="text" name="cpf" id="cpf" tabindex="5" class="form-control" placeholder="CPF" [(ngModel)]="form.cpf"
-      required minlength="6" #cpf="ngModel">
+    <input type="text" name="cpf" id="cpf" tabindex="5" class="form-control" placeholder="CPF" [(ngModel)]="pessoa.cpf"
+      required minlength="11" formControlName="cpf">
   </div>
   <div class="form-group">
     <input id="password1" tabindex="6" placeholder="Senha" type="password" class="form-control" name="password1"
-      [(ngModel)]="form.password1" required minlength="6" #password1="ngModel">
+      [(ngModel)]="pessoa.password1" required minlength="6" formControlName="password1">
   </div>
   <div class="form-group">
-    <input id="password2" tabindex="6" placeholder="Senha" type="password" class="form-control" name="password2"
-      [(ngModel)]="form.password2" required minlength="7" #password2="ngModel" placeholder="Confirmar senha">
+    <input id="password2" tabindex="7" placeholder="Senha" type="password" class="form-control" name="password2"
+      [(ngModel)]="pessoa.password2" required minlength="6" placeholder="Confirmar senha" formControlName="password2">
   </div>
   <div class="form-group">
-    <div *ngIf="f.submitted && email.invalid">
-      <div class="alert alert-danger" role="alert" *ngIf="email.errors.required">Preencha o email</div>
-      <div class="alert alert-danger" role="alert" *ngIf="email.errors.email">
+    <div *ngIf="f.submitted && cadastroForm.controls.email?.invalid">
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.email?.errors?.required">Preencha o email</div>
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.email?.errors?.email">
         Deve ser um email válido
       </div>
     </div>
-    <div *ngIf="f.submitted && username.invalid">
-      <div class="alert alert-danger" role="alert" *ngIf="username.errors.required">Preencha o usuário</div>
-      <div class="alert alert-danger" role="alert" *ngIf="username.errors.minlength">
-        Usuário deve possui pelo menos 3 caracteres.
-      </div>
-      <div *ngIf="username.errors.maxlength">
-        Usuário deve possuir no máximo 20 caracteres.
+    <div *ngIf="f.submitted && cadastroForm.controls.username?.invalid">
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.username?.errors?.required">Preencha o usuário</div>
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.username?.errors?.minlength">
+        Usuário deve possuir pelo menos 3 caracteres.
       </div>
     </div>
-    <div *ngIf="f.submitted && password1.invalid">
-      <div class="alert alert-danger" role="alert" *ngIf="password1.errors.required">Preencha a senha</div>
-      <div class="alert alert-danger" role="alert" *ngIf="password2.errors.required">Confirme a senha</div>
-      <div class="alert alert-danger" role="alert" *ngIf="password1.errors.minlength">
+    <div *ngIf="f.submitted && cadastroForm.controls.telefone?.invalid">
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.telefone?.errors?.required">Preencha o número de telefone</div>
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.telefone?.errors?.minlength">
+        Número deve possuir pelo menos 9 caracteres.
+      </div>
+    </div>
+    <div *ngIf="f.submitted && cadastroForm.controls.cpf?.invalid">
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.cpf?.errors?.required">Preencha o CPF</div>
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.cpf?.errors?.minlength">
+        CPF deve possuir 11 caracteres.
+      </div>
+    </div>
+    <div *ngIf="f.submitted && cadastroForm.controls.nascimento?.invalid">
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.nascimento?.errors?.required">Preencha a data de nascimento</div>
+    </div>
+    <div *ngIf="f.submitted && cadastroForm.controls.password1?.invalid">
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.password1?.errors?.required">Preencha a senha</div>
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.password2?.errors?.required">Confirme a senha</div>
+      <div class="alert alert-danger" role="alert" *ngIf="cadastroForm.controls.password1?.errors?.minlength">
         Senha deve ter pelo menos 6 caracteres.
       </div>
     </div>
-    <div *ngIf="f.submitted && password1 !== password2">
+    <div *ngIf="f.submitted && pessoa.password1 !== pessoa.password2"> 
         <div class="alert alert-danger" role="alert">
             Senhas estão diferentes.
         </div>
@@ -61,9 +74,10 @@
     </div>
     <div class="row d-flex justify-content-center">
       <div class="col-4">
-        <button type="submit" name="register-submit" id="register-submit" tabindex="4"
-          class="form-control btn btn-register" value="Cadastrar" (click)="onSubmit()">Cadastrar</button>
+        <button type="submit" name="register-submit" id="register-submit" tabindex="8"
+          class="form-control btn btn-register" value="Cadastrar">Cadastrar</button>
       </div>
     </div>
   </div>
 </form>
+
