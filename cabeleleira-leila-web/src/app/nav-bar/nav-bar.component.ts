@@ -16,6 +16,7 @@ export class NavBarComponent implements OnInit {
   faSignOutAlt = faSignOutAlt;
   pessoa: IPessoa = new Pessoa();
   mostraCadastrarServicos: boolean;
+  mostraEntrarCadastrar: boolean;
 
   constructor(private tokenStorageService: TokenStorageService) { }
 
@@ -25,6 +26,8 @@ export class NavBarComponent implements OnInit {
       this.pessoa.roles = this.tokenStorageService.getUserRoles();
       this.pessoa.id = this.tokenStorageService.getUserId();
       this.mostraCadastrarServicos = !!this.pessoa.roles.find(role => role === ROLE_ADMIN);
+    } else {
+      this.mostraEntrarCadastrar = true;
     }
   }
 
