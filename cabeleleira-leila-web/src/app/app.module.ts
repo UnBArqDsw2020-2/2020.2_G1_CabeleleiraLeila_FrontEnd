@@ -15,6 +15,7 @@ import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { ServicoDeleteComponent } from './servicos/servico-delete.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { PerfilComponent } from './perfil/perfil.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
     ServicosComponent,
     ServicoUpdateComponent,
     ServicoDeleteComponent,
-    NavBarComponent
+    NavBarComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
