@@ -1,16 +1,33 @@
+<div class="d-flex flex-column">
+  <label class="font-weight-bold mt-2 mb-0">Interesses</label>
+  <div class="d-flex">
+    <input type="text" name="interesse" id="interesse" tabindex="1" class="form-control" placeholder="Interesse"
+      [(ngModel)]="interesse"><button class="btn btn-primary mx-2" (click)="adicionarInteresse()">+</button>
+  </div>
+  <button class="btn btn-light" *ngFor="let interesseOnList of cliente.interesses">{{interesseOnList}} <button
+      class="btn btn-sm btn-danger" (click)="excluirInteresse(interesseOnList)">x</button></button>
+  <label class="font-weight-bold mt-2 mb-0">Observações</label>
+  <div class="d-flex">
+    <input type="text" name="observacoes" id="observacoes" tabindex="1" class="form-control" placeholder="Observações"
+      [(ngModel)]="observacao"><button class="btn btn-primary mx-2" (click)="adicionarObs()">+</button>
+  </div>
+  <button class="btn btn-light" *ngFor="let observacoesOnList of cliente.observacoes">{{observacoesOnList}} <button
+      class="btn btn-sm btn-danger" (click)="excluirObs(observacoesOnList)">x</button></button>
+  <button *ngIf="mostraSalvar" (click)="salvar()" class="btn btn-info">Salvar</button>
+</div>
 <div class="card-deck">
-    <div class="card-agendamento">
-        <div class="card-header d-flex justify-content-between">
-            <h5 class="titulo-agendamento"></h5>
-        </div>
-        <div class="card-body">
-            <p class="card-desc"></p>
-            <h5 class="card-title">Preço: 
-            </h5>
-            <h5 class="card-text">Nota: </h5>
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-primary btn-cor">Agendar horário</button>
-            </div>
-        </div>
+  <div class="card-agendamento">
+    <div class="card-header d-flex justify-content-between">
+      <h5 class="titulo-agendamento"></h5>
     </div>
+    <div class="card-body">
+      <p class="card-desc"></p>
+      <h5 class="card-title">Preço:
+      </h5>
+      <h5 class="card-text">Nota: </h5>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary btn-cor">Agendar horário</button>
+      </div>
+    </div>
+  </div>
 </div>
