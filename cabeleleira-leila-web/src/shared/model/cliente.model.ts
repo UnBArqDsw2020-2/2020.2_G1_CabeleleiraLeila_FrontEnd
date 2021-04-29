@@ -1,13 +1,13 @@
-import { IPessoa } from "./pessoa.model copy";
+import { IPessoa } from "./pessoa.model";
 
 export interface ICliente extends IPessoa{
-    foto?: string;
-    observacoes?: string;
+    interesses?: string[];
+    observacoes?: string[];
 }
 
 export class Cliente implements ICliente {
     constructor(
-        public foto?: string,
-        public observacoes?: string
+        public interesses?: string[],
+        public observacoes?: string[]
     ) { }
 }
