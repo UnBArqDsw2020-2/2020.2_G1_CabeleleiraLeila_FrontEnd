@@ -16,6 +16,7 @@ export class PerfilComponent implements OnInit {
   interesse: string;
   observacao: string;
   mostraSalvar: boolean;
+  mostraPedidos: boolean;
 
   constructor(
     private clienteService: PerfilService,
@@ -68,5 +69,9 @@ export class PerfilComponent implements OnInit {
         this.cliente = res.body;
       }
     );
+  }
+
+  mostrarPedidos(): void {
+    this.mostraPedidos = true;
   }
 }
