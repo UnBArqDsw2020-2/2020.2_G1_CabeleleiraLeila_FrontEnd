@@ -11,19 +11,11 @@
               <h5 class="card-title">{{servico.nome}}</h5>
               <div class="d-flex">
                 <div>
-                  <div>
-                    {{servico.data| date: 'dd/MM/yyyy'}}
-                  </div>
-                  <div>
-                    {{servico.data| date:"HH:mm"}}
-                  </div>
-                  <div>
                     R$: {{servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
                   </div>
                 </div>
                 <div class="d-flex flex-column">
                     <button class="btn btn-info">Cancelar</button>
-                    <button class="btn btn-info">Reagendar</button>
                 </div>
             </div>
             </div>
