@@ -1,5 +1,4 @@
-<button *ngIf="criaServico" class="btn btn-info m-2" (click)="open(content)">Cadastrar
-  serviço</button>
+<a class="dropdown-item" *ngIf="criaServico" (click)="open(content)">Cadastrar serviços</a>
 <button *ngIf="editaServico" class="btn btn-sm" (click)="open(content)">
   <fa-icon [icon]="faPencilAlt"></fa-icon>
 </button>

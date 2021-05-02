@@ -16,7 +16,6 @@ export class PerfilComponent implements OnInit {
   interesse: string;
   observacao: string;
   mostraSalvar: boolean;
-  mostraPedidos: boolean;
 
   constructor(
     private clienteService: PerfilService,
@@ -51,10 +50,10 @@ export class PerfilComponent implements OnInit {
   adicionarObs(): void {
     this.mostraSalvar = true;
     if (!!this.cliente.observacoes) {
-      this.cliente.observacoes.push(this.interesse);
+      this.cliente.observacoes.push(this.observacao);
     } else {
       this.cliente.observacoes = [];
-      this.cliente.observacoes.push(this.interesse);
+      this.cliente.observacoes.push(this.observacao);
     }
   }
 
@@ -69,9 +68,5 @@ export class PerfilComponent implements OnInit {
         this.cliente = res.body;
       }
     );
-  }
-
-  mostrarPedidos(): void {
-    this.mostraPedidos = true;
   }
 }
