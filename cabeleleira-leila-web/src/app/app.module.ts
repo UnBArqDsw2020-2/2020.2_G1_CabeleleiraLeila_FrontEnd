@@ -19,6 +19,8 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { ServicoAgendamentoComponent } from './servicos/servico-agendamento.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import 'bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { ServicoAgendamentoComponent } from './servicos/servico-agendamento.comp
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -6,6 +6,7 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { PedidoComponent } from './pedido/pedido.component';
 
 const routes: Routes = [
   { path: 'login-cadastro', component: LoginComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'adicionar-servico', component: ServicoUpdateComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'agendamento/:idServico', component: AgendamentoComponent }
+  { path: 'agendamentos', component: PedidoComponent }
 ];
 
 @NgModule({

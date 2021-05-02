@@ -1,6 +1,7 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { IPedido } from 'src/shared/model/pedido.model';
+import { TokenStorageService } from '../_services-auth/token-storage.service';
 import { PedidoService } from './pedido.service';
 
 @Component({
@@ -10,15 +11,16 @@ import { PedidoService } from './pedido.service';
 })
 export class PedidoComponent implements OnInit {
 
-  @Input()
   idCliente: number;
   pedidos: IPedido[];
 
   constructor(
-    private pedidoService: PedidoService
+    private pedidoService: PedidoService,
+    private tokenStorageService: TokenStorageService
   ) { }
 
   ngOnInit(): void {
+    this.idCliente = this.tokenStorageService.getUserId();
     this.pedidoService.findByClienteID(this.idCliente).subscribe(
       (res: HttpResponse<IPedido[]>) => {
         this.pedidos = res.body;
