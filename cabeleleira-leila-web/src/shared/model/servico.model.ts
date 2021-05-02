@@ -5,6 +5,8 @@ export interface IServico {
     valor?: number;
     imagem?: string;
     nota?: number;
+    data?: Date;
+    selecionado?: boolean;
 }
 
 export class Servico implements IServico {
@@ -14,6 +16,8 @@ export class Servico implements IServico {
         public descricao?: string,
         public valor?: number,
         public imagem?: string,
-        public nota?: number
+        public nota?: number,
+        public data?: Date,
+        public selecionado?: boolean
     ) { }
 }

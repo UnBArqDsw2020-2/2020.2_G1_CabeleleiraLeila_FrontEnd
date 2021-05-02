@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -14,6 +14,14 @@ import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { ServicoDeleteComponent } from './servicos/servico-delete.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { PerfilComponent } from './perfil/perfil.component';
+import { PedidoComponent } from './pedido/pedido.component';
+import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { ServicoAgendamentoComponent } from './servicos/servico-agendamento.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import 'bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,17 +31,23 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ServicosComponent,
     ServicoUpdateComponent,
     ServicoDeleteComponent,
-    NavBarComponent
+    NavBarComponent,
+    PerfilComponent,
+    PedidoComponent,
+    AgendamentoComponent,
+    ServicoAgendamentoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BsDropdownModule.forRoot()
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
