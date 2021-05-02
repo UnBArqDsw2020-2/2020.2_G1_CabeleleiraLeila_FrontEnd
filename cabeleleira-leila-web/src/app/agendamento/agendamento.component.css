@@ -1,0 +1,10 @@
+.selecionado{
+    /* background-color: rgb(92, 190, 247); */
+    outline: 1px solid rgb(129, 129, 141);
+    opacity: 0.5;
+}
+      
+.selecionado:hover {
+  opacity: 1.0;
+  background-color: white;
+}

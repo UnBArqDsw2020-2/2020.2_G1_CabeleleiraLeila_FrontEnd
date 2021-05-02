@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'servicos', component: ServicosComponent },
   { path: 'adicionar-servico', component: ServicoUpdateComponent },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'agendamento/:idServico', component: AgendamentoComponent }
+  { path: 'agendamento/:idServico', component: AgendamentoComponent },
   { path: 'agendamentos', component: PedidoComponent }
 ];
 

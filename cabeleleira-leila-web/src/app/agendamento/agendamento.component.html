@@ -14,16 +14,41 @@
     </div>
   </div>
 </div>
-<div>
-    <app-servico-agendamento class="w-100" *ngFor="let servico of servicos" [servico]="servico"></app-servico-agendamento>
+<div class="d-flex flex-wrap">
+    <app-servico-agendamento *ngFor="let servico of servicosAdicionados" [servico]="servico"></app-servico-agendamento>
 </div>
-<div class="d-flex">
+<div class="d-flex" *ngIf="mostraFinalizaPedidoAdicionaServico">
   <div>
-    <button *ngIf="mostraAdicionaServico" class="btn btn-info my-1 ml-1" (click)="adicionarAgenda()">Adicionar mais
-      serviços</button>
+    <button class="btn btn-info my-1 ml-1" (click)="open(content);selecionarServicosParaAdicionar()">Adicionar mais serviços</button>
   </div>
   <div>
-    <button *ngIf="mostraFinalizaPedido" class="btn btn-info my-1 mx-1" (click)="finalizarPedido()">Finalizar
+    <button class="btn btn-info my-1 ml-1" (click)="open(content);selecionarServicosParaRemover()">Remover serviços</button>
+  </div>
+  <div>
+    <button class="btn btn-info my-1 mx-1" (click)="finalizarPedido()">Finalizar
       pedido</button>
   </div>
 </div>
+<button class="btn btn-sm" >
+
+</button>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Selecione os serviços</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="mostraServicosParaAdicionar" class="d-flex flex-wrap">
+      <app-servico-agendamento *ngFor="let servico of servicosParaAdicionar" [servico]="servico" (click)="selecionaServicoParaAdicionar(servico)" class="pointer" [ngClass]="{'selecionado': servico.selecionado}"></app-servico-agendamento>
+    </div>
+    <div *ngIf="mostraServicosParaRemover" class="d-flex flex-wrap">
+      <app-servico-agendamento *ngFor="let servico of servicosParaRemover" [servico]="servico" (click)="selecionaServicoParaAdicionar(servico)" class="pointer" [ngClass]="{'selecionado': servico.selecionado}"></app-servico-agendamento>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button *ngIf="mostraServicosParaAdicionar" type="button" class="btn btn-outline-dark" (click)="adicionarServicos()">Adicionar</button>
+    <button *ngIf="mostraServicosParaRemover" type="button" class="btn btn-outline-dark" (click)="removerServicos()">Remover</button>
+  </div>
+</ng-template>
