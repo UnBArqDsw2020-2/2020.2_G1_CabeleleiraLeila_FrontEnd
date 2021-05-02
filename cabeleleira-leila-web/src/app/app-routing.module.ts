@@ -5,6 +5,7 @@ import { TelaInicialComponent } from './tela-inicial/tela-inicial.component';
 import { ServicosComponent } from './servicos/servicos.component';
 import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AgendamentoComponent } from './agendamento/agendamento.component';
 
 const routes: Routes = [
   { path: 'login-cadastro', component: LoginComponent },
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: '', component: TelaInicialComponent },
   { path: 'servicos', component: ServicosComponent },
   { path: 'adicionar-servico', component: ServicoUpdateComponent },
-  { path: 'perfil', component: PerfilComponent }
+  { path: 'perfil', component: PerfilComponent },
+  { path: 'agendamento/:idServico', component: AgendamentoComponent }
 ];
 
 @NgModule({

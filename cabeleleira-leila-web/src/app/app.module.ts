@@ -17,6 +17,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { ServicoAgendamentoComponent } from './servicos/servico-agendamento.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,9 @@ import { PedidoComponent } from './pedido/pedido.component';
     ServicoDeleteComponent,
     NavBarComponent,
     PerfilComponent,
-    PedidoComponent
+    PedidoComponent,
+    AgendamentoComponent,
+    ServicoAgendamentoComponent
   ],
   imports: [
     BrowserModule,
