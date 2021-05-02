@@ -17,6 +17,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import 'bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +40,8 @@ import { PedidoComponent } from './pedido/pedido.component';
     ReactiveFormsModule,
     NgbModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    BsDropdownModule.forRoot()
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

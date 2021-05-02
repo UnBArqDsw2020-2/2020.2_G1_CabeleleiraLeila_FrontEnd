@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../_services-auth/token-storage.service';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { IPessoa, Pessoa } from 'src/shared/model/pessoa.model';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { ROLE_ADMIN, ROLE_CLIENTE } from 'src/shared/constants/roles.constants';
 
 @Component({
@@ -11,6 +12,9 @@ import { ROLE_ADMIN, ROLE_CLIENTE } from 'src/shared/constants/roles.constants';
 })
 
 export class NavBarComponent implements OnInit {
+
+  faUserCircle = faUserCircle;
+
   isLoggedIn: boolean;
   roles: string[] = [];
   faSignOutAlt = faSignOutAlt;
