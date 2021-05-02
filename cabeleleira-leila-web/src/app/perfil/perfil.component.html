@@ -1,0 +1,25 @@
+<div class="geral d-flex">
+  <div class="interesses w-50">
+    <label class="font-weight-bold mt-2 mb-3">Interesses</label>
+    <div class="d-flex">
+      <input type="text" name="interesse" id="interesse" tabindex="1" class="form-control" placeholder="Interesse"
+        [(ngModel)]="interesse"><button class="btn btn-primary mx-2" (click)="adicionarInteresse()">+</button>
+    </div>
+    <div class="botaointeresse">
+      <button class="btn btn-light" *ngFor="let interesseOnList of cliente.interesses">{{interesseOnList}} <button
+          class="btn btn-sm btn-outline-danger" (click)="excluirInteresse(interesseOnList)">x</button></button>
+    </div>
+  </div>
+  <div class="observacao w-50">
+    <label class="font-weight-bold mt-2 mb-3">Observações</label>
+    <div class="d-flex">
+      <input type="text" name="observacoes" id="observacoes" tabindex="1" class="form-control" placeholder="Observações"
+        [(ngModel)]="observacao"><button class="btn btn-primary mx-2" (click)="adicionarObs()">+</button>
+    </div>
+    <div class="botaoobservacao">
+      <button class="btn btn-light" *ngFor="let observacoesOnList of cliente.observacoes">{{observacoesOnList}} <button
+          class="btn btn-sm btn-outline-danger" (click)="excluirObs(observacoesOnList)">x</button></button>
+    </div>
+  </div>
+</div>
+<button *ngIf="mostraSalvar" (click)="salvar()" class="btn btn-info">Salvar</button>

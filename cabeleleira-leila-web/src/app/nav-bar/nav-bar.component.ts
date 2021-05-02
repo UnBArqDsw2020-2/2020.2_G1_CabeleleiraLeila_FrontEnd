@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from '../_services-auth/token-storage.service';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { IPessoa, Pessoa } from 'src/shared/model/pessoa.model';
-import { ROLE_ADMIN } from 'src/shared/constants/roles.constants';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { ROLE_ADMIN, ROLE_CLIENTE } from 'src/shared/constants/roles.constants';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,6 +12,9 @@ import { ROLE_ADMIN } from 'src/shared/constants/roles.constants';
 })
 
 export class NavBarComponent implements OnInit {
+
+  faUserCircle = faUserCircle;
+
   isLoggedIn: boolean;
   roles: string[] = [];
   faSignOutAlt = faSignOutAlt;
@@ -25,7 +29,7 @@ export class NavBarComponent implements OnInit {
       this.isLoggedIn = true;
       this.pessoa.roles = this.tokenStorageService.getUserRoles();
       this.pessoa.id = this.tokenStorageService.getUserId();
-      this.mostraCadastrarServicos = !!this.pessoa.roles.find(role => role === ROLE_ADMIN);
+      this.mostraCadastrarServicos = !!this.pessoa.roles.find(role => role === ROLE_CLIENTE);
     } else {
       this.mostraEntrarCadastrar = true;
     }
