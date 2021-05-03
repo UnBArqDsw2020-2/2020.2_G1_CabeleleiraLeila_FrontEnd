@@ -7,6 +7,7 @@ import { ServicoUpdateComponent } from './servicos/servico-update.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { ConsultaAgendamentosComponent } from './consulta-agendamentos/consulta-agendamentos.component';
 
 const routes: Routes = [
   { path: 'login-cadastro', component: LoginComponent },
@@ -16,7 +17,9 @@ const routes: Routes = [
   { path: 'adicionar-servico', component: ServicoUpdateComponent },
   { path: 'perfil', component: PerfilComponent },
   { path: 'agendamento/:idServico', component: AgendamentoComponent },
-  { path: 'agendamentos', component: PedidoComponent }
+  { path: 'agendamentos', component: PedidoComponent },
+  { path: 'consulta-agendamentos', component: ConsultaAgendamentosComponent }
+
 ];
 
 @NgModule({

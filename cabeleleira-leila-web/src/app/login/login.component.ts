@@ -36,7 +36,6 @@ export class LoginComponent implements OnInit {
     if (this.isValidToLogin()) {
       this.authService.login(this.pessoa).subscribe(
         (data: any) => {
-          console.log('data', data);
           this.tokenStorage.saveToken(data.token);
           this.tokenStorage.saveUser(data);
           window.localStorage.setItem("token", data.token);
