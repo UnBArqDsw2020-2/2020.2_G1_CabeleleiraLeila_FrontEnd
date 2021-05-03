@@ -20,7 +20,7 @@ export class AgendamentoService {
     return this.http.post<IAgendamento>(this.resourceUrl, agendamento, { observe: 'response' });
   }
 
-  createMultiples(agendamentos: IAgendamento[]): Observable<EntityArrayResponseType> {
+  createAll(agendamentos: IAgendamento[]): Observable<EntityArrayResponseType> {
     return this.http.post<IAgendamento[]>(this.resourceUrl + '/list', agendamentos, { observe: 'response' });
   }
 

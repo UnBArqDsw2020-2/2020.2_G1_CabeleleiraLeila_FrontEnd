@@ -1,14 +1,12 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Agenda, IAgenda } from 'src/shared/model/agenda.model';
 import { Cliente, ICliente } from 'src/shared/model/cliente.model';
 import { IPedido, Pedido } from 'src/shared/model/pedido.model';
 import { IServico, Servico } from 'src/shared/model/servico.model';
 import { PedidoService } from '../pedido/pedido.service';
 import { ServicoService } from '../servicos/servicos.service';
 import { TokenStorageService } from '../_services-auth/token-storage.service';
-import { AgendaService } from './agenda.service';
 import * as moment from 'moment';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Agendamento, IAgendamento } from 'src/shared/model/agendamento.model';
@@ -24,8 +22,7 @@ const horariosDiaComercial = [8, 9, 10, 11, 12, 14, 15, 16, 17, 18];
 
 export class AgendamentoComponent implements OnInit {
 
-  agendas: IAgenda[] = [];
-  agendasMarcadas: IAgenda[] = [];
+  agendamentosMarcados: IAgendamento[] = [];
   agendamentos: IAgendamento[] = [];
   servico: IServico = new Servico();
   todosServicos: IServico[] = [];
@@ -43,7 +40,6 @@ export class AgendamentoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private agendaService: AgendaService,
     private agendamentoService: AgendamentoService,
     private pedidoService: PedidoService,
     private servicoService: ServicoService,
@@ -68,12 +64,12 @@ export class AgendamentoComponent implements OnInit {
   }
 
   buscarAgendas(agendamento: IAgendamento): void {
-    this.agendaService.findByDataServicoId(agendamento.data, this.servico.id).subscribe(
-      (res: HttpResponse<IAgenda[]>) => {
-        this.agendasMarcadas = res.body;
+    this.agendamentoService.findByDataServicoId(agendamento.data, this.servico.id).subscribe(
+      (res: HttpResponse<IAgendamento[]>) => {
+        this.agendamentosMarcados = res.body;
         agendamento.horariosDisponiveis = horariosDiaComercial;
-        console.log('agendasMarcadas', this.agendasMarcadas);
-        this.agendasMarcadas.forEach((agenda: IAgenda) => {
+        console.log('agendamentosMarcados', this.agendamentosMarcados);
+        this.agendamentosMarcados.forEach((agenda: IAgendamento) => {
           agendamento.horariosDisponiveis = agendamento.horariosDisponiveis.filter(hora => hora !== agenda.hora);
         })
       },
@@ -106,15 +102,10 @@ export class AgendamentoComponent implements OnInit {
     this.pedido.confirmado = true;
     this.pedido.valor = 0;
     this.agendamentos.forEach((agendamento: IAgendamento) => {
-      this.agendas.push(agendamento);
       this.pedido.valor += agendamento.servico.valor;
-    })
-    this.agendaService.createMultiples(this.agendas).subscribe(
-      (res: HttpResponse<IAgenda[]>) => {
-        this.agendas = res.body;
-      });
-    this.agendamentoService.createMultiples(this.agendamentos).subscribe(
-      (res: HttpResponse<IAgenda[]>) => {
+    });
+    this.agendamentoService.createAll(this.agendamentos).subscribe(
+      (res: HttpResponse<IAgendamento[]>) => {
         this.agendamentos = res.body;
       },
       () => {
