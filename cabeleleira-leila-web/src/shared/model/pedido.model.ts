@@ -1,5 +1,5 @@
+import { IAgendamento } from "./agendamento.model";
 import { ICliente } from "./cliente.model";
-import { IServico } from "./servico.model";
 
 export interface IPedido {
     id?: number;
@@ -7,7 +7,7 @@ export interface IPedido {
     data?: string;
     confirmado?: boolean;
     cliente?: ICliente;
-    servicos?: IServico[];
+    agendamentos?: IAgendamento[];
 }
 
 export class Pedido implements IPedido {
@@ -17,6 +17,6 @@ export class Pedido implements IPedido {
         public data?: string,
         public confirmado?: boolean,
         public cliente?: ICliente,
-        public servicos?: IServico[]
+        public agendamentos?: IAgendamento[]
     ) { }
 }

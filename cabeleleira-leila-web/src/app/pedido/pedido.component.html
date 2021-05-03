@@ -1,22 +1,52 @@
-<div *ngFor="let pedido of pedidos; let i = index" class="card">
-  <div class="card-header">
+<div class="titulo" align="center">
+  <h2 *ngIf="!userAdmin">Meus Agendamentos</h2>
+  <h2 *ngIf="userAdmin">Pedido clientes</h2>
+  <div class="d-flex justify-content-center my-3">
+    <div class="mr-3">
+        Filtrar por data:
+    </div>
+    <div class="mx-2 mb-1">
+        <label for="data-inicio">Início</label>
+        <input type="date" name="data-inicio" id="data-inicio" class="form-control mb-1" [(ngModel)]="dataInicio">
+    </div>
+    <div class="mr-1 mb-1">
+        <label for="data-inicio">Fim</label>
+        <input type="date" name="data-fim" id="data-fim" class="form-control mb-1" [(ngModel)]="dataFim">
+    </div>
+    <div class="align-self-end ml-1 mb-2">
+        <button class="btn btn-info" (click)="selecionaAgendamentosPedidosPorData(dataInicio, dataFim)"><span *ngIf="mostraFiltrar">Filtrar</span><span *ngIf="!mostraFiltrar">Limpar filtro</span></button>
+    </div>
+</div>
+</div>
+<div *ngFor="let pedido of pedidos; let i = index" class="container-fluid">
+  <div *ngIf="pedido.agendamentos.length !== 0" class="card-header mx-3">
     {{i+1}}-Pedido realizado no dia {{pedido.data | date: 'dd/MM/yyyy'}}
   </div>
-  <div class="card-body">
-    <div *ngFor="let servico of pedido.servicos" class="row">
-      <div class="col-sm-6">
-        <div class="card">
-          <div class="card-body d-flex">
-            <div class="d-flex flex-column">
-              <h5 class="card-title">{{servico.nome}}</h5>
-              <div class="d-flex">
-                <div>
-                  R$: {{servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
+  <div class="row">
+    <div *ngFor="let agendamento of pedido.agendamentos" class="card-body col-sm-12 col-lg-6">
+      <div class="card">
+        <div class="card-body d-flex">
+          <div class="d-flex flex-column w-100">
+            <h5 class="card-title">{{agendamento.servico.nome}}</h5>
+            <div class="row">
+              <div class="col-8">
+                <div class="data m-1">
+                  <fa-icon class="calendario" [icon]="faCalendar"></fa-icon>
+                  {{agendamento.data | date: 'dd/MM/yyyy'}}
+                </div>
+                <div class="horario m-1">
+                  <fa-icon class="relogio" [icon]="faClock"></fa-icon>
+                  {{agendamento.hora}}:00
+                </div>
+                <div class="preco m-1">
+                  <fa-icon class="dinheiro" [icon]="faMoneyBillWave"></fa-icon>
+                  R$: {{agendamento.servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
                 </div>
               </div>
-              <div class="d-flex flex-column">
-                <button class="btn btn-info">Cancelar</button>
-              </div>
+              <!-- <div class="col-3 d-inline-block">
+                <button class="btn btn-info m-2">Reagendar</button>
+                <button class="btn btn-info m-2">Desmarcar</button>
+              </div> -->
             </div>
           </div>
         </div>

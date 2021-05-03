@@ -31,7 +31,6 @@ export class ServicoUpdateComponent {
     private servicoService: ServicoService) { }
 
   ngOnInit(): void {
-    console.log('servico', this.servico);
     this.defineTela();
   }
 

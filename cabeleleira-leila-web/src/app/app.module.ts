@@ -21,6 +21,7 @@ import { AgendamentoComponent } from './agendamento/agendamento.component';
 import { ServicoAgendamentoComponent } from './servicos/servico-agendamento.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import 'bootstrap';
+import { ConsultaAgendamentosComponent } from './consulta-agendamentos/consulta-agendamentos.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import 'bootstrap';
     PerfilComponent,
     PedidoComponent,
     AgendamentoComponent,
-    ServicoAgendamentoComponent
+    ServicoAgendamentoComponent,
+    ConsultaAgendamentosComponent
   ],
   imports: [
     BrowserModule,

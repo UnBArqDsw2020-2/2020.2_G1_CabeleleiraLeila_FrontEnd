@@ -7,12 +7,13 @@
                 <fa-icon class="user" [icon]="faUserCircle"></fa-icon>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Dados pessoais</a>
+                <!-- <a class="dropdown-item" href="#">Dados pessoais</a> -->
                 <a class="dropdown-item" routerLink="/perfil">Dados complementares</a>
                 <a class="dropdown-item" routerLink="/agendamentos">Meus agendamentos</a>
-                <app-servico-update *ngIf="mostraCadastrarServicos" [editaServico]="false" [criaServico]="true">
+                <app-servico-update class="pointer" *ngIf="userAdmin" [editaServico]="false" [criaServico]="true">
                 </app-servico-update>
-                <a class="dropdown-item" (click)="logout()">Sair</a>
+                <a *ngIf="userAdmin" class="dropdown-item pointer" routerLink="/consulta-agendamentos">Consultar agendamentos dos clientes</a>
+                <a class="dropdown-item pointer" (click)="logout()">Sair</a>
             </div>
         </div>
         <button *ngIf="mostraEntrarCadastrar" class="btn-rosa-tema btn btn-info my-2 mr-2"
