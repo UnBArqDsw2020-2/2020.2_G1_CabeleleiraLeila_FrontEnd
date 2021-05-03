@@ -1,5 +1,4 @@
 <div class="d-flex flex-wrap">
-  <!-- <app-servico-agendamento  [servico]="servico"></app-servico-agendamento> -->
   <div *ngFor="let agendamento of agendamentos" class="card-deck p-0 m-0">
     <div class="card-servico">
       <div class="card-header d-flex justify-content-between">
@@ -15,12 +14,12 @@
               <button class="btn btn-info mb-1 mx-1" (click)="buscarAgendas(agendamento)">Consultar</button>
             </div>
           </div>
-          <div *ngIf="agendamento.mostraHorarios" class="d-flex flex-column">
-            <label class="pl-1 pt-2">Selecione o horário</label>
-            <div>
-              <button class="btn btn-info mx-1" *ngFor="let hora of agendamento.horariosDisponiveis"
-                (click)="defineHora(hora, agendamento)">{{hora}}:00</button>
-            </div>
+        </div>
+        <div *ngIf="agendamento.mostraHorarios" class="d-flex flex-column">
+          <label class="pl-1 pt-2">Selecione o horário</label>
+          <div>
+            <button class="btn btn-info m-1" *ngFor="let hora of agendamento.horariosDisponiveis"
+              (click)="defineHora(hora, agendamento)">{{hora}}:00</button>
           </div>
         </div>
         <p class="card-desc">{{agendamento.servico.descricao}}</p>
