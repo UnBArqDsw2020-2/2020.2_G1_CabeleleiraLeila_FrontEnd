@@ -3,6 +3,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IPedido } from 'src/shared/model/pedido.model';
 import { TokenStorageService } from '../_services-auth/token-storage.service';
 import { PedidoService } from './pedido.service';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pedido',
@@ -10,6 +13,10 @@ import { PedidoService } from './pedido.service';
   styleUrls: ['./pedido.component.css']
 })
 export class PedidoComponent implements OnInit {
+
+  faCalendar = faCalendar;
+  faClock = faClock;
+  faMoneyBillWave = faMoneyBillWave;
 
   idCliente: number;
   pedidos: IPedido[];

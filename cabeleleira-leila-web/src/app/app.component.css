@@ -16,6 +16,11 @@ nav {
 footer{
   background: #f2f2f2;
   padding: 3% 4%;
+  /* position: fixed; */
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  margin-top: 100px;
 }
 
 .footer-box__bloco-pagamento{
