@@ -1,0 +1,22 @@
+.geralzinha{
+    background-color: yellow;
+}
+.botaoCancelar{
+    background-color: greenyellow;
+}
+
+.calendario{
+    font-size: x-large;
+    padding-right: 5px;
+    color: rgb(216, 55, 55);
+}
+.relogio{
+    font-size: x-large;
+    padding-right: 5px;
+    color: rgb(158, 158, 238);
+}
+.dinheiro{
+    font-size: x-large;
+    padding-right: 5px;
+    color: rgb(65, 190, 65);
+}
