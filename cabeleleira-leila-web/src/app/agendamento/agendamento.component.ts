@@ -8,9 +8,11 @@ import { IServico, Servico } from 'src/shared/model/servico.model';
 import { PedidoService } from '../pedido/pedido.service';
 import { ServicoService } from '../servicos/servicos.service';
 import { TokenStorageService } from '../_services-auth/token-storage.service';
-import { AgendamentoService } from './agendamento.service';
+import { AgendaService } from './agenda.service';
 import * as moment from 'moment';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Agendamento, IAgendamento } from 'src/shared/model/agendamento.model';
+import { AgendamentoService } from './agendamento.service';
 
 const horariosDiaComercial = [8, 9, 10, 11, 12, 14, 15, 16, 17, 18];
 
@@ -22,9 +24,9 @@ const horariosDiaComercial = [8, 9, 10, 11, 12, 14, 15, 16, 17, 18];
 
 export class AgendamentoComponent implements OnInit {
 
-  agenda: IAgenda = new Agenda();
+  agendas: IAgenda[] = [];
   agendasMarcadas: IAgenda[] = [];
-  agendasCriadas: IAgenda[] = [];
+  agendamentos: IAgendamento[] = [];
   servico: IServico = new Servico();
   todosServicos: IServico[] = [];
   servicosAdicionados: IServico[] = [];
@@ -32,7 +34,6 @@ export class AgendamentoComponent implements OnInit {
   servicosParaRemover: IServico[] = [];
   cliente: ICliente = new Cliente();
   pedido: IPedido = new Pedido();
-  horariosDisponiveis = horariosDiaComercial;
   mostraHorarios: boolean;
   mostraFinalizaPedidoAdicionaServico: boolean;
   closeResult = '';
@@ -42,6 +43,7 @@ export class AgendamentoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private agendaService: AgendaService,
     private agendamentoService: AgendamentoService,
     private pedidoService: PedidoService,
     private servicoService: ServicoService,
@@ -51,14 +53,13 @@ export class AgendamentoComponent implements OnInit {
 
   ngOnInit(): void {
     this.cliente.id = this.tokenStorageService.getUserId();
-    this.pedido.servicos = [];
+    this.pedido.agendamentos = [];
     this.route.params.subscribe(params => {
       this.servico.id = params['idServico'];
       this.servicoService.find(this.servico.id).subscribe((res: HttpResponse<IServico>) => {
-        this.servico = res.body;
-        this.servicosAdicionados.push(this.servico);
-        this.agenda.servico = this.servico;
-        this.agendasCriadas.push(this.agenda);
+        const servicoAoAbrir = res.body;
+        this.agendamentos.push(new Agendamento(null, null, null, servicoAoAbrir));
+        this.servicosAdicionados.push(servicoAoAbrir);
       })
     });
     this.servicoService.query().subscribe((res: HttpResponse<IServico[]>) => {
@@ -66,55 +67,66 @@ export class AgendamentoComponent implements OnInit {
     });
   }
 
-  buscarAgendas(): void {
-    this.agendamentoService.findByDataServicoId(this.agenda.data, this.servico.id).subscribe(
+  buscarAgendas(agendamento: IAgendamento): void {
+    this.agendaService.findByDataServicoId(agendamento.data, this.servico.id).subscribe(
       (res: HttpResponse<IAgenda[]>) => {
         this.agendasMarcadas = res.body;
-        this.horariosDisponiveis = horariosDiaComercial;
+        agendamento.horariosDisponiveis = horariosDiaComercial;
         console.log('agendasMarcadas', this.agendasMarcadas);
         this.agendasMarcadas.forEach((agenda: IAgenda) => {
-          this.horariosDisponiveis = this.horariosDisponiveis.filter(hora => hora !== agenda.hora);
+          agendamento.horariosDisponiveis = agendamento.horariosDisponiveis.filter(hora => hora !== agenda.hora);
         })
       },
       (res: HttpErrorResponse) => {
       },
       () => {
-        this.mostraHorarios = !!this.agenda.data;
-        console.log('mostraHorarios', this.mostraHorarios);
+        agendamento.mostraHorarios = !!agendamento.data;
       }
     )
   }
 
-  defineHora(hora: number): void {
-    this.agenda.hora = hora;
-    this.horariosDisponiveis = this.horariosDisponiveis.filter(horaOnList => horaOnList === hora);
-    console.log('this.horariosDisponiveis', this.horariosDisponiveis);
+  defineHora(hora: number, agendamento: IAgendamento): void {
+    agendamento.hora = hora;
+    agendamento.horariosDisponiveis = agendamento.horariosDisponiveis.filter(horaOnList => horaOnList === hora);
     this.mostraFinalizaPedidoAdicionaServico = true;
   }
 
   adicionarServicos(): void {
     const servicosSelecionados = this.servicosParaAdicionar.filter(servico => servico.selecionado);
     this.servicosAdicionados = this.servicosAdicionados.concat(servicosSelecionados);
+    servicosSelecionados.forEach((servico: IServico) => {
+      this.agendamentos.push(new Agendamento(null, null, null, servico));
+    });
     this.modalService.dismissAll();
   }
 
   finalizarPedido() {
     this.pedido.cliente = this.cliente;
-    this.pedido.data = moment().format(this.agenda.data);
+    this.pedido.data = moment().format("YYYY-MM-DD");
     this.pedido.confirmado = true;
     this.pedido.valor = 0;
-    this.agendasCriadas.forEach((agenda: IAgenda) => {
-      this.servicosAdicionados.forEach((servicoAdicionado: IServico) => {
-        this.pedido.servicos.push(servicoAdicionado);
-        this.pedido.valor += servicoAdicionado.valor;
-      })
-      this.agendamentoService.create(agenda).subscribe((res: HttpResponse<IAgenda>) => {
-      })
+    this.agendamentos.forEach((agendamento: IAgendamento) => {
+      this.agendas.push(agendamento);
+      this.pedido.valor += agendamento.servico.valor;
     })
-    this.pedidoService.create(this.pedido).subscribe((res: HttpResponse<IPedido>) => {
-      this.pedido = res.body;
-      this.router.navigate(['']);
-    });
+    this.agendaService.createMultiples(this.agendas).subscribe(
+      (res: HttpResponse<IAgenda[]>) => {
+        this.agendas = res.body;
+      });
+    this.agendamentoService.createMultiples(this.agendamentos).subscribe(
+      (res: HttpResponse<IAgenda[]>) => {
+        this.agendamentos = res.body;
+      },
+      () => {
+
+      },
+      () => {
+        this.pedido.agendamentos = this.agendamentos;
+        this.pedidoService.create(this.pedido).subscribe((res: HttpResponse<IPedido>) => {
+          this.pedido = res.body;
+          this.router.navigate(['']);
+        });
+      });
   }
 
   selecionarServicosParaAdicionar(): void {
@@ -141,6 +153,9 @@ export class AgendamentoComponent implements OnInit {
   removerServicos(): void {
     this.servicosAdicionados = this.servicosParaRemover.filter(servico => !servico.selecionado);
     this.servicosParaRemover = this.servicosParaRemover.filter(servico => !servico.selecionado);
+    this.servicosAdicionados.forEach((servico: IServico) => {
+      this.agendamentos = this.agendamentos.filter(agendamento => agendamento.servico.id === servico.id);
+    });
   }
 
   open(content: any) {

@@ -1,35 +1,52 @@
-<div class="d-flex">
-  <div class="d-flex flex-column">
-    <label for="dia" class="pl-1 pt-2">Selecione o dia do pedido</label>
-    <div class="align-self-start mx-1 d-flex">
-      <input type="date" name="dia" id="dia" class="form-control mb-1" [(ngModel)]="agenda.data" required>
-      <button class="btn btn-info mb-1 mx-1" (click)="buscarAgendas()">Consultar</button>
-    </div>
-  </div>
-  <div *ngIf="mostraHorarios" class="d-flex flex-column">
-    <label class="pl-1 pt-2">Selecione o horário</label>
-    <div>
-      <button class="btn btn-info mx-1" *ngFor="let hora of horariosDisponiveis"
-        (click)="defineHora(hora)">{{hora}}:00</button>
-    </div>
-  </div>
-</div>
 <div class="d-flex flex-wrap">
-    <app-servico-agendamento *ngFor="let servico of servicosAdicionados" [servico]="servico"></app-servico-agendamento>
+  <!-- <app-servico-agendamento  [servico]="servico"></app-servico-agendamento> -->
+  <div *ngFor="let agendamento of agendamentos" class="card-deck p-0 m-0">
+    <div class="card-servico">
+      <div class="card-header d-flex justify-content-between">
+        <h5 class="titulo-servico">{{agendamento.servico.nome}}</h5>
+      </div>
+      <img class="card-img-top" src="{{agendamento.servico.imagem}}" alt="Imagem do servico">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="d-flex flex-column">
+            <label for="dia" class="pl-1 pt-2">Selecione o dia do pedido</label>
+            <div class="align-self-start mx-1 d-flex">
+              <input type="date" name="dia" id="dia" class="form-control mb-1" [(ngModel)]="agendamento.data" required>
+              <button class="btn btn-info mb-1 mx-1" (click)="buscarAgendas(agendamento)">Consultar</button>
+            </div>
+          </div>
+          <div *ngIf="agendamento.mostraHorarios" class="d-flex flex-column">
+            <label class="pl-1 pt-2">Selecione o horário</label>
+            <div>
+              <button class="btn btn-info mx-1" *ngFor="let hora of agendamento.horariosDisponiveis"
+                (click)="defineHora(hora, agendamento)">{{hora}}:00</button>
+            </div>
+          </div>
+        </div>
+        <p class="card-desc">{{agendamento.servico.descricao}}</p>
+        <h5 class="card-title">Preço:
+          {{agendamento.servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
+        </h5>
+        <h5 class="card-text">Nota: {{agendamento.servico.nota}}</h5>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="d-flex" *ngIf="mostraFinalizaPedidoAdicionaServico">
   <div>
-    <button class="btn btn-info my-1 ml-1" (click)="open(content);selecionarServicosParaAdicionar()">Adicionar mais serviços</button>
+    <button class="btn btn-info my-1 ml-1" (click)="open(content);selecionarServicosParaAdicionar()">Adicionar mais
+      serviços</button>
   </div>
   <div>
-    <button class="btn btn-info my-1 ml-1" (click)="open(content);selecionarServicosParaRemover()">Remover serviços</button>
+    <button class="btn btn-info my-1 ml-1" (click)="open(content);selecionarServicosParaRemover()">Remover
+      serviços</button>
   </div>
   <div>
     <button class="btn btn-info my-1 mx-1" (click)="finalizarPedido()">Finalizar
       pedido</button>
   </div>
 </div>
-<button class="btn btn-sm" >
+<button class="btn btn-sm">
 
 </button>
 <ng-template #content let-modal>
@@ -41,14 +58,20 @@
   </div>
   <div class="modal-body">
     <div *ngIf="mostraServicosParaAdicionar" class="d-flex flex-wrap">
-      <app-servico-agendamento *ngFor="let servico of servicosParaAdicionar" [servico]="servico" (click)="selecionaServicoParaAdicionar(servico)" class="pointer" [ngClass]="{'selecionado': servico.selecionado}"></app-servico-agendamento>
+      <app-servico-agendamento *ngFor="let servico of servicosParaAdicionar" [servico]="servico"
+        (click)="selecionaServicoParaAdicionar(servico)" class="pointer"
+        [ngClass]="{'selecionado': servico.selecionado}"></app-servico-agendamento>
     </div>
     <div *ngIf="mostraServicosParaRemover" class="d-flex flex-wrap">
-      <app-servico-agendamento *ngFor="let servico of servicosParaRemover" [servico]="servico" (click)="selecionaServicoParaAdicionar(servico)" class="pointer" [ngClass]="{'selecionado': servico.selecionado}"></app-servico-agendamento>
+      <app-servico-agendamento *ngFor="let servico of servicosParaRemover" [servico]="servico"
+        (click)="selecionaServicoParaAdicionar(servico)" class="pointer"
+        [ngClass]="{'selecionado': servico.selecionado}"></app-servico-agendamento>
     </div>
   </div>
   <div class="modal-footer">
-    <button *ngIf="mostraServicosParaAdicionar" type="button" class="btn btn-outline-dark" (click)="adicionarServicos()">Adicionar</button>
-    <button *ngIf="mostraServicosParaRemover" type="button" class="btn btn-outline-dark" (click)="removerServicos()">Remover</button>
+    <button *ngIf="mostraServicosParaAdicionar" type="button" class="btn btn-outline-dark"
+      (click)="adicionarServicos()">Adicionar</button>
+    <button *ngIf="mostraServicosParaRemover" type="button" class="btn btn-outline-dark"
+      (click)="removerServicos()">Remover</button>
   </div>
 </ng-template>
