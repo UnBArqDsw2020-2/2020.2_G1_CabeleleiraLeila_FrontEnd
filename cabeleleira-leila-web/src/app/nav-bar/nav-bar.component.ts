@@ -3,7 +3,7 @@ import { TokenStorageService } from '../_services-auth/token-storage.service';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { IPessoa, Pessoa } from 'src/shared/model/pessoa.model';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
-import { ROLE_ADMIN, ROLE_CLIENTE } from 'src/shared/constants/roles.constants';
+import { ROLE_ADMIN } from 'src/shared/constants/roles.constants';
 
 @Component({
   selector: 'app-nav-bar',
@@ -29,7 +29,8 @@ export class NavBarComponent implements OnInit {
       this.isLoggedIn = true;
       this.pessoa.roles = this.tokenStorageService.getUserRoles();
       this.pessoa.id = this.tokenStorageService.getUserId();
-      this.mostraCadastrarServicos = !!this.pessoa.roles.find(role => role === ROLE_CLIENTE);
+      this.mostraCadastrarServicos = !!this.pessoa.roles.find(role => role === ROLE_ADMIN);
+      console.log('this.pessoa.roles', this.pessoa.roles);  
     } else {
       this.mostraEntrarCadastrar = true;
     }
