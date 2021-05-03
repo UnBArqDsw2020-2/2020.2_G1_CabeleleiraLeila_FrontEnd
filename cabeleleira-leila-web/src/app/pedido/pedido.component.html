@@ -6,24 +6,24 @@
     {{i+1}}-Pedido realizado no dia {{pedido.data | date: 'dd/MM/yyyy'}}
   </div>
   <div class="row">
-    <div *ngFor="let servico of pedido.servicos" class="card-body col-sm-12 col-lg-6">
+    <div *ngFor="let agendamento of pedido.agendamentos" class="card-body col-sm-12 col-lg-6">
       <div class="card">
         <div class="card-body d-flex">
           <div class="d-flex flex-column w-100">
-            <h5 class="card-title">{{servico.nome}}</h5>
+            <h5 class="card-title">{{agendamento.servico.nome}}</h5>
             <div class="row">
               <div class="col-8">
                 <div class="data m-1">
                   <fa-icon class="calendario" [icon]="faCalendar"></fa-icon>
-                  25/12/2021
+                  {{agendamento.data | date: 'dd/MM/yyyy'}}
                 </div>
                 <div class="horario m-1">
                   <fa-icon class="relogio" [icon]="faClock"></fa-icon>
-                  10:00
+                  {{agendamento.hora}}:00
                 </div>
                 <div class="preco m-1">
                   <fa-icon class="dinheiro" [icon]="faMoneyBillWave"></fa-icon>
-                  R$: {{servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
+                  R$: {{agendamento.servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
                 </div>
               </div>
               <div class="col-3 d-inline-block">

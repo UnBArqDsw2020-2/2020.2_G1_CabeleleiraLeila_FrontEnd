@@ -1,17 +1,22 @@
 import { IServico } from "./servico.model";
 
-export interface IAgenda{
+export interface IAgendamento{
     id?: number;
     data?: string;
-    hora?: number;
     servico?: IServico;
+    hora?: number;
+    horariosDisponiveis?: number[];
+    mostraHorarios?: boolean;
 }
 
-export class Agenda implements IAgenda {
+export class Agendamento implements IAgendamento {
     constructor(
         public id?: number,
         public data?: string,
         public hora?: number,
         public servico?: IServico,
+        public horariosDisponiveis?: number[],
+        public mostraHorarios?: boolean
+
     ) { }
 }
