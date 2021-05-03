@@ -57,7 +57,6 @@ export class AgendamentoComponent implements OnInit {
       this.servicoService.find(this.servico.id).subscribe((res: HttpResponse<IServico>) => {
         this.servico = res.body;
         this.servicosAdicionados.push(this.servico);
-        this.pedido.valor = this.servico.valor;
         this.agenda.servico = this.servico;
         this.agendasCriadas.push(this.agenda);
       })
@@ -94,17 +93,20 @@ export class AgendamentoComponent implements OnInit {
   }
 
   adicionarServicos(): void {
-    this.servicosAdicionados = this.servicosParaAdicionar.filter(servico => servico.selecionado);
+    const servicosSelecionados = this.servicosParaAdicionar.filter(servico => servico.selecionado);
+    this.servicosAdicionados = this.servicosAdicionados.concat(servicosSelecionados);
     this.modalService.dismissAll();
   }
 
   finalizarPedido() {
     this.pedido.cliente = this.cliente;
-    this.pedido.data = moment().format("YYYY-MM-DD");
+    this.pedido.data = moment().format(this.agenda.data);
     this.pedido.confirmado = true;
+    this.pedido.valor = 0;
     this.agendasCriadas.forEach((agenda: IAgenda) => {
       this.servicosAdicionados.forEach((servicoAdicionado: IServico) => {
         this.pedido.servicos.push(servicoAdicionado);
+        this.pedido.valor += servicoAdicionado.valor;
       })
       this.agendamentoService.create(agenda).subscribe((res: HttpResponse<IAgenda>) => {
       })
