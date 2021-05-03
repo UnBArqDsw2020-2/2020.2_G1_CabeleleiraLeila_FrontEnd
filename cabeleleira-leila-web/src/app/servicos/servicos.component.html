@@ -2,7 +2,7 @@
     <div *ngFor="let servico of servicos" class="card-servico">
         <div class="card-header d-flex justify-content-between">
             <h5 class="titulo-servico">{{servico.nome}}</h5>
-            <div>
+            <div *ngIf="mostraEditDeleteServico">
                 <app-servico-delete [servico]="servico"></app-servico-delete>
                 <app-servico-update [servico]="servico" [editaServico]="true" [criaServico]="false">
                 </app-servico-update>
