@@ -1,12 +1,7 @@
-<div class="card-deck">
-    <div *ngFor="let servico of servicos" class="card-servico">
+<div class="card-deck p-0 m-0">
+    <div class="card-servico">
         <div class="card-header d-flex justify-content-between">
             <h5 class="titulo-servico">{{servico.nome}}</h5>
-            <div>
-                <app-servico-delete [servico]="servico"></app-servico-delete>
-                <app-servico-update [servico]="servico" [editaServico]="true" [criaServico]="false">
-                </app-servico-update>
-            </div>
         </div>
         <img class="card-img-top" src="{{servico.imagem}}" alt="Imagem do servico">
         <div class="card-body">
@@ -14,9 +9,6 @@
             <h5 class="card-title">Preço: {{servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
             </h5>
             <h5 class="card-text">Nota: {{servico.nota}}</h5>
-            <div class="d-flex justify-content-center">
-                <button class="btn btn-primary btn-cor" [routerLink]="['agendamento', servico.id]">Agendar horário</button>
-            </div>
         </div>
     </div>
 </div>

@@ -17,6 +17,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { PerfilComponent } from './perfil/perfil.component';
 import { PedidoComponent } from './pedido/pedido.component';
+import { AgendamentoComponent } from './agendamento/agendamento.component';
+import { ServicoAgendamentoComponent } from './servicos/servico-agendamento.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import 'bootstrap';
 
@@ -31,7 +33,9 @@ import 'bootstrap';
     ServicoDeleteComponent,
     NavBarComponent,
     PerfilComponent,
-    PedidoComponent
+    PedidoComponent,
+    AgendamentoComponent,
+    ServicoAgendamentoComponent
   ],
   imports: [
     BrowserModule,
