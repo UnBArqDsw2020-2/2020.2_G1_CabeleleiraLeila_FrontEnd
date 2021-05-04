@@ -68,7 +68,6 @@ export class AgendamentoComponent implements OnInit {
       (res: HttpResponse<IAgendamento[]>) => {
         this.agendamentosMarcados = res.body;
         agendamento.horariosDisponiveis = horariosDiaComercial;
-        console.log('agendamentosMarcados', this.agendamentosMarcados);
         this.agendamentosMarcados.forEach((agenda: IAgendamento) => {
           agendamento.horariosDisponiveis = agendamento.horariosDisponiveis.filter(hora => hora !== agenda.hora);
         })

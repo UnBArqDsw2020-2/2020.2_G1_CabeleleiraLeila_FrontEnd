@@ -1,8 +1,25 @@
 <div class="titulo" align="center">
-  <h2>Meus Agendamentos</h2>
+  <h2 *ngIf="!userAdmin">Meus Agendamentos</h2>
+  <h2 *ngIf="userAdmin">Pedido clientes</h2>
+  <div class="d-flex justify-content-center my-3">
+    <div class="mr-3">
+        Filtrar por data:
+    </div>
+    <div class="mx-2 mb-1">
+        <label for="data-inicio">Início</label>
+        <input type="date" name="data-inicio" id="data-inicio" class="form-control mb-1" [(ngModel)]="dataInicio">
+    </div>
+    <div class="mr-1 mb-1">
+        <label for="data-inicio">Fim</label>
+        <input type="date" name="data-fim" id="data-fim" class="form-control mb-1" [(ngModel)]="dataFim">
+    </div>
+    <div class="align-self-end ml-1 mb-2">
+        <button class="btn btn-info" (click)="selecionaAgendamentosPedidosPorData(dataInicio, dataFim)"><span *ngIf="mostraFiltrar">Filtrar</span><span *ngIf="!mostraFiltrar">Limpar filtro</span></button>
+    </div>
+</div>
 </div>
 <div *ngFor="let pedido of pedidos; let i = index" class="container-fluid">
-  <div class="card-header mx-3">
+  <div *ngIf="pedido.agendamentos.length !== 0" class="card-header mx-3">
     {{i+1}}-Pedido realizado no dia {{pedido.data | date: 'dd/MM/yyyy'}}
   </div>
   <div class="row">
@@ -26,10 +43,10 @@
                   R$: {{agendamento.servico.valor.toLocaleString("pt-BR", { minimumFractionDigits: 2 })}}
                 </div>
               </div>
-              <div class="col-3 d-inline-block">
+              <!-- <div class="col-3 d-inline-block">
                 <button class="btn btn-info m-2">Reagendar</button>
                 <button class="btn btn-info m-2">Desmarcar</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>

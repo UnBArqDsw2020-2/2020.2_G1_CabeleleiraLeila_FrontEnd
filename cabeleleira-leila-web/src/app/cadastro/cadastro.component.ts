@@ -34,7 +34,6 @@ export class CadastroComponent implements OnInit {
     if (this.isValidToSave())
       this.authService.register(this.pessoa).subscribe(
         (data: any) => {
-          console.log(data);
           this.isSuccessful = true;
           this.isSignUpFailed = false;
           this.reloadPage();

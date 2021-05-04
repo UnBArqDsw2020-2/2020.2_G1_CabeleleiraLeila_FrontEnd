@@ -6,6 +6,9 @@ import { PedidoService } from './pedido.service';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
+import { IAgendamento } from 'src/shared/model/agendamento.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pedido',
@@ -14,12 +17,21 @@ import { faMoneyBillWave } from '@fortawesome/free-solid-svg-icons';
 })
 export class PedidoComponent implements OnInit {
 
+  @Input()
+  userAdmin: boolean;
+
+  
+  pedidos: IPedido[];
+  pedidosFiltrados: IPedido[];
   faCalendar = faCalendar;
   faClock = faClock;
   faMoneyBillWave = faMoneyBillWave;
+  dataInicio: string;
+  dataFim: string;
+  mostraFiltrar = true;
 
   idCliente: number;
-  pedidos: IPedido[];
+
 
   constructor(
     private pedidoService: PedidoService,
@@ -28,11 +40,32 @@ export class PedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.idCliente = this.tokenStorageService.getUserId();
-    this.pedidoService.findByClienteID(this.idCliente).subscribe(
-      (res: HttpResponse<IPedido[]>) => {
+    this.loadPedidos();
+  }
+
+  loadPedidos(): void{
+    if (!this.userAdmin) {
+      this.pedidoService.findByClienteID(this.idCliente).subscribe(
+        (res: HttpResponse<IPedido[]>) => {
+          this.pedidos = res.body;
+        });
+    } else {
+      this.pedidoService.query().subscribe((res: HttpResponse<IPedido[]>) => {
         this.pedidos = res.body;
-        console.log('pedidos', this.pedidos);
       });
+    }
+  }
+
+  selecionaAgendamentosPedidosPorData(inicio: string, fim: string) {
+    if(!this.mostraFiltrar){
+      window.location.reload();
+    }
+    this.mostraFiltrar = !this.mostraFiltrar;
+    this.pedidos.forEach((pedido: IPedido) => {
+      pedido.agendamentos = pedido.agendamentos.filter(agendamento => (moment(agendamento.data).isBetween(moment(inicio), moment(fim)) ||
+        moment(agendamento.data).isSame(moment(inicio)) ||
+        moment(agendamento.data).isSame(moment(fim))));
+    });
   }
 
 }
